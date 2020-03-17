@@ -9,5 +9,8 @@ public class Application {
         Cart cart = new Cart();
         Product product = new Product("Ipad Pro");
         cart.addProduct(product);
+
+        Product inkPen = new Product("Hero Ink Pen");
+        cart.addProduct(inkPen);
     }
 }
