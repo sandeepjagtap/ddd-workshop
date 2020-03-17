@@ -8,6 +8,7 @@ public class Application {
 
     public static void main(String[] args) {
         Cart cart = new Cart();
+
         Product ipadPro = new Product("Ipad Pro");
         Item ipadProItem = new Item(ipadPro, 1);
         cart.addItem(ipadProItem);
@@ -15,6 +16,14 @@ public class Application {
         Product inkPen = new Product("Hero Ink Pen");
         Item inkPenItem = new Item(inkPen, 1);
         cart.addItem(inkPenItem);
+
+        Product bat = new Product("GM Cricket Bat");
+        Item batItem = new Item(bat, 1);
+        cart.addItem(batItem);
+
+        Product ipadProToBeRemoved = new Product("Ipad Pro");
+        Item ipadProToBeRemovedItem = new Item(ipadProToBeRemoved, 1);
+        cart.removeItem(ipadProToBeRemovedItem);
 
     }
 }
