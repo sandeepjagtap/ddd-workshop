@@ -6,8 +6,11 @@ public class Product implements ValueObject<Product> {
 
     private String name;
 
-    public Product(String name) {
+    private Price price;
+
+    public Product(String name, Price price) {
         this.name = name;
+        this.price = price;
     }
 
     @Override
@@ -15,18 +18,20 @@ public class Product implements ValueObject<Product> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return name.equals(product.name);
+        return name.equals(product.name) &&
+                price.equals(product.price);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name, price);
     }
 
     @Override
     public String toString() {
         return "Product{" +
                 "name='" + name + '\'' +
+                ", price=" + price +
                 '}';
     }
 
@@ -35,6 +40,7 @@ public class Product implements ValueObject<Product> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return name.equals(product.name);
+        return name.equals(product.name) &&
+                price.equals(product.price);
     }
 }

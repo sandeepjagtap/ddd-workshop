@@ -5,13 +5,13 @@ import com.tw.dddworkshop.domain.events.DomainEvent;
 import com.tw.dddworkshop.domain.events.ItemAddedToCartEvent;
 import com.tw.dddworkshop.domain.events.ItemRemovedFromCartEvent;
 
-import javax.lang.model.SourceVersion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Cart implements Entity {
+
 
     private final UUID id;
 
@@ -48,8 +48,11 @@ public class Cart implements Entity {
         this.status = Status.CHECKEDOUT;
 
         events.add(new CartCheckedOutEvent(items));
-
         System.out.println("Cart with id " + id + " checkout out");
+    }
+
+    public List<Item> allItems() {
+        return items;
     }
 
     @Override
