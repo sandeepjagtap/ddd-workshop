@@ -34,7 +34,12 @@ public class Application {
 
         System.out.println("cart1 and cart 2 are different? = " + !cart1.equals(cart2));
 
+        System.out.println("cart1 and cart 2 are different? = " + !cart1.sameIdentityAs(cart2));
 
+        Product inkPen1 = new Product("Hero Ink Pen");
+        Product inkPen2 = new Product("Hero Ink Pen");
+
+        System.out.println("inkPen1 can be replaced by inkPen2 = "+ inkPen1.sameValueAs(inkPen2) );
 
     }
 }
