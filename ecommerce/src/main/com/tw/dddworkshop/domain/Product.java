@@ -2,7 +2,7 @@ package com.tw.dddworkshop.domain;
 
 import java.util.Objects;
 
-public class Product {
+public class Product implements ValueObject<Product> {
 
     private String name;
 
@@ -28,5 +28,13 @@ public class Product {
         return "Product{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean sameValueAs(Product o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return name.equals(product.name);
     }
 }
