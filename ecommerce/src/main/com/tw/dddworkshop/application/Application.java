@@ -4,8 +4,6 @@ import com.tw.dddworkshop.domain.Cart;
 import com.tw.dddworkshop.domain.Item;
 import com.tw.dddworkshop.domain.Product;
 
-import javax.lang.model.SourceVersion;
-
 public class Application {
 
     public static void main(String[] args) {
