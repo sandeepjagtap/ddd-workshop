@@ -39,5 +39,7 @@ public class Application {
 
         System.out.println("inkPen1 can be replaced by inkPen2 = "+ inkPen1.sameValueAs(inkPen2) );
 
+        cart.checkOut();
+
     }
 }

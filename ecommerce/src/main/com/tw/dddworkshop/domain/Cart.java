@@ -1,9 +1,11 @@
 package com.tw.dddworkshop.domain;
 
+import com.tw.dddworkshop.domain.events.CartCheckedOutEvent;
 import com.tw.dddworkshop.domain.events.DomainEvent;
 import com.tw.dddworkshop.domain.events.ItemAddedToCartEvent;
 import com.tw.dddworkshop.domain.events.ItemRemovedFromCartEvent;
 
+import javax.lang.model.SourceVersion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +18,8 @@ public class Cart implements Entity {
     private List<DomainEvent>events = new ArrayList<>();
 
     private List<Item> items = new ArrayList<>();
+
+    private Status status;
 
     public Cart() {
       this.id = UUID.randomUUID();
@@ -40,6 +44,14 @@ public class Cart implements Entity {
         System.out.println("Cart now has "+ items);
     }
 
+    public void checkOut() {
+        this.status = Status.CHECKEDOUT;
+
+        events.add(new CartCheckedOutEvent(items));
+
+        System.out.println("Cart with id " + id + " checkout out");
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,4 +72,8 @@ public class Cart implements Entity {
         Cart cart = (Cart) o;
         return id.equals(cart.id);
     }
+}
+
+enum Status {
+    CHECKEDOUT,AVAILABLE
 }
