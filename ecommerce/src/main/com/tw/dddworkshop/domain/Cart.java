@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Cart {
+public class Cart implements Entity {
 
     private final UUID id;
 
@@ -51,5 +51,13 @@ public class Cart {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public boolean sameIdentityAs(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cart cart = (Cart) o;
+        return id.equals(cart.id);
     }
 }
