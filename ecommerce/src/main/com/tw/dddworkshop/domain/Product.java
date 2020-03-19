@@ -7,10 +7,16 @@ public class Product implements ValueObject<Product> {
     private String name;
 
     private Price price;
+    private Double weightInGrams;
 
-    public Product(String name, Price price) {
+    public Product(String name, Price price, Double weightInGrams) {
         this.name = name;
         this.price = price;
+        this.weightInGrams = weightInGrams;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -42,5 +48,9 @@ public class Product implements ValueObject<Product> {
         Product product = (Product) o;
         return name.equals(product.name) &&
                 price.equals(product.price);
+    }
+
+    public Double getWeightInGms() {
+        return weightInGrams;
     }
 }

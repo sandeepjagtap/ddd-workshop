@@ -1,16 +1,13 @@
 package com.tw.dddworkshop.domain.factory;
 
-import com.tw.dddworkshop.domain.Cart;
-import com.tw.dddworkshop.domain.Item;
-import com.tw.dddworkshop.domain.Order;
-import com.tw.dddworkshop.domain.Product;
+import com.tw.dddworkshop.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrderFactory {
-    public static Order create(Cart cart) {
+    public static Order create(Cart cart, ShippingInformation shippingInformation) {
         List<Item> items = cart.allItems();
 
         List<Product> products = items.stream().map( item -> {
@@ -24,6 +21,6 @@ public class OrderFactory {
         }).flatMap(List::stream).collect(Collectors.toList());
 
 
-        return new Order(products);
+        return new Order(products, shippingInformation );
     }
 }
