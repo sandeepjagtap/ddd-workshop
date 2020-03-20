@@ -23,8 +23,20 @@ public class Price {
     }
 
     @Override
+    public String toString() {
+        return "Price{" +
+                "value=" + value +
+                ", currency=" + currency +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(value, currency);
+    }
+
+    public Price add(Price otherPrice) {
+        return new Price(this.value.add(otherPrice.value), this.currency);
     }
 }
 
