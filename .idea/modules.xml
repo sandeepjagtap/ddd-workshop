@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ddd-workshop.iml" filepath="$PROJECT_DIR$/ddd-workshop.iml" />
       <module fileurl="file://$PROJECT_DIR$/ecommerce/ecommerce.iml" filepath="$PROJECT_DIR$/ecommerce/ecommerce.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-2/module-2.iml" filepath="$PROJECT_DIR$/module-2/module-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/order/order.iml" filepath="$PROJECT_DIR$/order/order.iml" />
     </modules>
   </component>
 </project>

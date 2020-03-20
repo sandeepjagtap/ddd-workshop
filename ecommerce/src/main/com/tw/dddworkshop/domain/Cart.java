@@ -1,34 +1,35 @@
 package com.tw.dddworkshop.domain;
 
-import com.tw.dddworkshop.domain.events.CartCheckedOutEvent;
-import com.tw.dddworkshop.domain.events.DomainEvent;
-import com.tw.dddworkshop.domain.events.ItemAddedToCartEvent;
-import com.tw.dddworkshop.domain.events.ItemRemovedFromCartEvent;
+import com.tw.dddworkshop.domain.events.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class Cart implements Entity {
 
 
     private final UUID id;
 
-    private List<DomainEvent>events = new ArrayList<>();
+    private List<DomainEvent> events = new ArrayList<>();
 
     private List<Item> items = new ArrayList<>();
 
     private Status status;
 
     public Cart() {
-      this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID();
     }
 
     public void addItem(Item item) {
         items.add(item);
 
-        ItemAddedToCartEvent itemAddedEvent = new ItemAddedToCartEvent(item.getProduct(), item.getQuantity());
+        ItemAddedToCartEvent itemAddedEvent =
+                new ItemAddedToCartEvent(item.getProduct().getName(),
+                        item.getProduct().getPrice(),
+                        item.getQuantity());
         events.add(itemAddedEvent);
 
         System.out.println("item added to chart = " + item);
@@ -38,16 +39,21 @@ public class Cart implements Entity {
         items.remove(item);
 
         ItemRemovedFromCartEvent itemRemovedFromCartEvent =
-                new ItemRemovedFromCartEvent(item.getProduct(), item.getQuantity());
+                new ItemRemovedFromCartEvent(item.getProduct().getName());
         events.add(itemRemovedFromCartEvent);
 
-        System.out.println("Cart now has "+ items);
+        System.out.println("Cart now has " + items);
     }
 
     public void checkOut() {
         this.status = Status.CHECKEDOUT;
 
-        events.add(new CartCheckedOutEvent(items));
+        List<CartItem> cartItems = items.stream().map(item ->
+                new CartItem(item.getProduct().getName(),
+                item.getProduct().getPrice(),
+                item.getQuantity())).collect(Collectors.toList());
+
+        events.add(new CartCheckedOutEvent(cartItems));
         System.out.println("Cart with id " + id + " checkout out");
     }
 
@@ -78,5 +84,5 @@ public class Cart implements Entity {
 }
 
 enum Status {
-    CHECKEDOUT,AVAILABLE
+    CHECKEDOUT, AVAILABLE
 }

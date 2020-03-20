@@ -9,6 +9,7 @@ public class Product implements ValueObject<Product> {
     private Price price;
     private Double weightInGrams;
 
+
     public Product(String name, Price price, Double weightInGrams) {
         this.name = name;
         this.price = price;
@@ -17,6 +18,11 @@ public class Product implements ValueObject<Product> {
 
     public String getName() {
         return name;
+    }
+
+
+    public Price getPrice() {
+        return price;
     }
 
     @Override
