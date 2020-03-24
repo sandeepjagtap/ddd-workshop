@@ -26,6 +26,7 @@ public class ApplicationForOrder {
         items.add(inkPen);
         items.add(bat);
 
+        // Assume that we received this event via message broker like kafka.
         CartCheckedOutEvent cartCheckedOutEvent = new CartCheckedOutEvent(items);
 
         List<ProductWeightInfo> productWeights = new ArrayList<>();

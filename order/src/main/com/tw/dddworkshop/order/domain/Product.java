@@ -2,8 +2,6 @@ package com.tw.dddworkshop.order.domain;
 
 import com.tw.dddworkshop.domain.Price;
 
-import java.util.Currency;
-
 public class Product {
     private String name;
     private Price price;
