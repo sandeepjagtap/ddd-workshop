@@ -9,6 +9,8 @@ public class Product implements ValueObject<Product> {
     private Price price;
     private Double weightInGrams;
 
+    //Add other attributes.
+
 
     public Product(String name, Price price, Double weightInGrams) {
         this.name = name;

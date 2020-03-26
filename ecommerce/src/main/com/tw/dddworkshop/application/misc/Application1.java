@@ -24,7 +24,7 @@ public class Application1 {
                 new CustomerAddressUpdatedEvent(UUID.randomUUID(),new Address("1", "2"));
 
         //Get Account for given customerId
-        customer.updateAddress(event.getAddress());
+        account.updateAddress(event.getAddress());
 
     }
 }
